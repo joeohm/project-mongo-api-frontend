@@ -33,7 +33,7 @@ const MovieDetails = () => {
       <Back />
       <h1>{movieInfo.title}</h1>
       <Description>{movieInfo.description}</Description>
-      <List>
+      <ul>
         {Object.entries(movieInfo).map((info) => {
           if (uselessInfo.some((u) => u === info[0])) {
             return null;
@@ -44,16 +44,12 @@ const MovieDetails = () => {
             </li>
           );
         })}
-      </List>
+      </ul>
     </DetailWrapper>
   );
 };
 
 export default MovieDetails;
-
-const List = styled.ul`
-  padding: 20px;
-`;
 
 const Description = styled.i`
   padding: 40px;
