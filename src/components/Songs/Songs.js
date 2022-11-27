@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Wrapper } from './GlobalStyles';
-import Loader from './Loader';
+import Back from '../Back';
+import { Wrapper } from '../GlobalStyles';
+import Loader from '../Loader';
 
 const Songs = () => {
   const [loading, setLoading] = useState(true);
@@ -18,13 +19,13 @@ const Songs = () => {
     return <Loader />;
   }
 
-  console.log(songsData);
   return (
     <Wrapper>
+      <Back />
       <ol>
         {songsData.map((song) => {
           return (
-            <li>
+            <li key={song._id}>
               <Link to={`/songs/id/${song._id}`}>
                 {song.artistName} - {song.trackName}
               </Link>

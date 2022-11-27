@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Wrapper } from './GlobalStyles';
-import Loader from './Loader';
+import Back from '../Back';
+import { DetailWrapper, Wrapper } from '../GlobalStyles';
+import Loader from '../Loader';
 
 const SongDetails = () => {
   const { id } = useParams();
@@ -18,8 +19,6 @@ const SongDetails = () => {
       .finally(() => setLoading(false));
   }, [id]);
 
-  console.log(songInfo);
-
   if (songInfo.message === 'Invalid id') {
     return <Wrapper>That song does not exist</Wrapper>;
   }
@@ -29,12 +28,12 @@ const SongDetails = () => {
   }
 
   return (
-    <Wrapper>
+    <DetailWrapper>
+      <Back />
       <h1>{songInfo.trackName}</h1>
       <h2>{songInfo.artistName}</h2>
       <ul>
         {Object.entries(songInfo).map((info) => {
-          console.log(info);
           if (uselessInfo.some((u) => u === info[0])) {
             return null;
           }
@@ -45,7 +44,7 @@ const SongDetails = () => {
           );
         })}
       </ul>
-    </Wrapper>
+    </DetailWrapper>
   );
 };
 
