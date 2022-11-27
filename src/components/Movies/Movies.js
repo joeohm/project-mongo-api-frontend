@@ -22,6 +22,7 @@ const Movies = () => {
   return (
     <Wrapper>
       <Back />
+      <h1>Movies</h1>
       <ol>
         {moviesData.map((movie) => {
           return (

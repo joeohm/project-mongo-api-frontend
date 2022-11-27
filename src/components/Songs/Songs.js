@@ -22,6 +22,7 @@ const Songs = () => {
   return (
     <Wrapper>
       <Back />
+      <h1>Songs</h1>
       <ol>
         {songsData.map((song) => {
           return (
