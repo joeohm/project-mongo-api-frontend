@@ -41,7 +41,7 @@ const SongDetails = () => {
           }
           return (
             <li key={key}>
-              {stringFix(key)}: {typeof value === 'string' ? stringFix(value) : value}
+              {stringFix(key)}: {stringFix(value)}
             </li>
           );
         })}
