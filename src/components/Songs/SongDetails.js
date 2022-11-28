@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Back from '../Back';
 import { DetailWrapper, Wrapper } from '../GlobalStyles';
 import Loader from '../Loader';
+import { stringFix } from '../util';
 
 const SongDetails = () => {
   const { id } = useParams();
@@ -34,12 +35,13 @@ const SongDetails = () => {
       <h2>{songInfo.artistName}</h2>
       <ul>
         {Object.entries(songInfo).map((info) => {
-          if (uselessInfo.some((u) => u === info[0])) {
+          const [key, value] = info;
+          if (uselessInfo.some((u) => u === key)) {
             return null;
           }
           return (
-            <li>
-              {info[0]}: {info[1]}
+            <li key={key}>
+              {stringFix(key)}: {typeof value === 'string' ? stringFix(value) : value}
             </li>
           );
         })}

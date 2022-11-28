@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Back from '../Back';
 import { DetailWrapper, Wrapper } from '../GlobalStyles';
 import Loader from '../Loader';
+import { stringFix } from '../util';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -35,12 +36,13 @@ const MovieDetails = () => {
       <Description>{movieInfo.description}</Description>
       <ul>
         {Object.entries(movieInfo).map((info) => {
-          if (uselessInfo.some((u) => u === info[0])) {
+          const [key, value] = info;
+          if (uselessInfo.some((u) => u === key)) {
             return null;
           }
           return (
-            <li key={info._id}>
-              {info[0]}: {info[1]}
+            <li key={key}>
+              {stringFix(key)}: {value}
             </li>
           );
         })}
